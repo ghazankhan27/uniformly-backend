@@ -2,20 +2,12 @@ const users = [
   {
     email: "ghazankhan27@hotmail.com",
     password: "123456789",
-    data: {
-      name: "Ghazan",
-      age: 22,
-      location: "Islamabad",
-    },
+    name: "Ghazan",
   },
   {
-    email: "ghazankhan227@hotmail.com",
-    password: "1234567811119",
-    data: {
-      name: "Ghazan",
-      age: 24,
-      location: "Islamabad",
-    },
+    email: "ali228@hotmail.com",
+    password: "123456789",
+    name: "Ali",
   },
 ];
 

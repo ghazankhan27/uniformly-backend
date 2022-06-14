@@ -8,9 +8,10 @@ const users = require("./users");
 // Login function
 
 const getName = (req, res) => {
+  console.log(req.user.email);
   temp = users.filter((user) => user.email == req.user.email);
 
-  res.status(200).send({ name: temp[0].data.name });
+  res.status(200).send({ name: temp[0].name });
 };
 
 module.exports = {
