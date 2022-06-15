@@ -8,11 +8,11 @@ const bcrypt = require("bcrypt");
 
 // Login function
 
-const login = (req, res) => {
+const login = async (req, res) => {
   if (req.body.email.length == 0 || req.body.password.length == 0)
     return res.status(400).send({ message: "No credentials" });
 
-  let user = {};
+  let user = null;
 
   for (let i = 0; i < users.length; i++) {
     if (req.body.email == users[i].email) {
@@ -21,13 +21,16 @@ const login = (req, res) => {
     }
   }
 
-  if (!user) return res.status(404).send({ message: "User does not exist" });
+  if (!user)
+    return res
+      .status(404)
+      .send({ message: "Email does not exist, sign up before you can login." });
 
-  if (req.body.password != user.password)
+  if (!(await bcrypt.compare(req.body.password, user.password)))
     return res.status(403).send({ message: "Wrong email or password" });
 
   const token = jwt.sign(req.body, process.env.SECRET);
-  res.status(200).send({ token: token });
+  res.status(200).send({ token: token, name: user.name });
 };
 
 const register = async (req, res) => {
@@ -47,7 +50,6 @@ const register = async (req, res) => {
   };
 
   for (let i = 0; i < users.length; i++) {
-    console.log(user.email, users[i].email);
     if (user.email === users[i].email) {
       return res.status(403).send({ message: "Already exists" });
     }
