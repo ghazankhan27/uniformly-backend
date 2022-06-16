@@ -8,6 +8,7 @@ const express = require("express");
 const cors = require("cors");
 const AuthRouter = require("./routes/AuthRouter");
 const DataRouter = require("./routes/DataRouter");
+const AdminAuthRouter = require("./routes/AdminAuthRouter");
 
 // Get express app
 
@@ -22,6 +23,7 @@ app.use(express.json());
 
 app.use("/auth", AuthRouter);
 app.use("/data", DataRouter);
+app.use("/admin", AdminAuthRouter);
 
 // Starting server
 
