@@ -1,7 +1,6 @@
 // Import all dependencies
 
 const jwt = require("jsonwebtoken");
-const users = require("./users");
 
 // ---- Functions ----
 
