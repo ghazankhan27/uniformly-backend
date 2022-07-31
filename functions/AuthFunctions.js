@@ -115,16 +115,16 @@ const register = async (req, res) => {
         )
           return res.status(403).send({ message: "Unable to register user" });
 
+        return res.status(201).send({ message: "Created" });
+
         // -- //
       }))
     )
       return res
         .status(500)
-        .send({ message: " Something went wrong while registering" });
+        .send({ message: "Something went wrong while registering" });
 
     // -- Registration Successful -- //
-
-    return res.status(201).send({ message: "Created" });
 
     // -- //
   } catch (err) {
