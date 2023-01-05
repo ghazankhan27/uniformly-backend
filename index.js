@@ -9,6 +9,7 @@ const cors = require("cors");
 const AuthRouter = require("./routes/AuthRouter");
 const DataRouter = require("./routes/DataRouter");
 const AdminAuthRouter = require("./routes/AdminAuthRouter");
+const UniversityRouter = require("./routes/UniversityRouter");
 
 // Get express app
 
@@ -18,11 +19,13 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/uploads", express.static("./uploads"));
 
 // Routes
 
 app.use("/auth", AuthRouter);
 app.use("/data", DataRouter);
+app.use("/university", UniversityRouter);
 app.use("/admin", AdminAuthRouter);
 
 // Starting server
