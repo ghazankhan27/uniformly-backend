@@ -8,7 +8,7 @@ const {
   getAllUniversities,
   updateUniversity,
   deleteUniversity,
-} = require("../functions/UniversityFunctions");
+} = require("../controllers/UniversityController");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

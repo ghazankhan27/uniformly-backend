@@ -1,7 +1,11 @@
 // Import dependencies
 
 const express = require("express");
-const functions = require("../functions/AuthFunctions");
+const {
+  login,
+  register,
+  authenticateToken,
+} = require("../controllers/AuthController");
 
 // Get express router
 
@@ -9,9 +13,9 @@ const router = express.Router();
 
 // Routes
 
-router.post("/login", functions.login);
-router.post("/register", functions.register);
-router.post("/authenticate", functions.authenticateToken);
+router.post("/login", login);
+router.post("/register", register);
+router.post("/authenticate", authenticateToken);
 
 // Export the router
 

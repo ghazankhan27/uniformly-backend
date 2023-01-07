@@ -1,7 +1,7 @@
 // Import dependencies
 
 const express = require("express");
-const functions = require("../functions/AdminAuthFunctions");
+const functions = require("../controllers/AdminAuthController");
 
 // Get express router
 

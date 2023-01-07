@@ -87,8 +87,10 @@ const getAllUniversities = async (req, res) => {
   try {
     const data = await db.many(
       `
-      SELECT * FROM university
-      ORDER BY id ASC
+      SELECT u.*, d.name as d_name FROM university u
+      INNER JOIN department d
+      ON d.id = u.department
+      ORDER BY u.id ASC
       `
     );
 

@@ -1,7 +1,7 @@
 // Import dependencies
 
 const express = require("express");
-const { getName } = require("../functions/DataFunctions");
+const { getName } = require("../controllers/DataController");
 const authenticateToken = require("../middleware/AuthenticateToken");
 
 // Get express router
