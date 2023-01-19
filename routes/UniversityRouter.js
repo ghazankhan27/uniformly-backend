@@ -8,6 +8,7 @@ const {
   getAllUniversities,
   updateUniversity,
   deleteUniversity,
+  getUniversityById,
 } = require("../controllers/UniversityController");
 
 const storage = multer.diskStorage({
@@ -41,6 +42,7 @@ const router = express.Router();
 // Routes
 
 router.get("/all", getAllUniversities);
+router.get("/all/:id", getUniversityById);
 router.post("/add", upload.single("image"), addNewUniversity);
 router.put("/update", upload.none(), updateUniversity);
 router.delete("/delete/:id", deleteUniversity);
