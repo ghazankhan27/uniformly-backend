@@ -56,7 +56,7 @@ const updateUniversity = async (req, res) => {
     const valid =
       !validator.isEmpty(req.body["id"]) &&
       !validator.isEmpty(req.body["name"]) &&
-      !validator.isEmpty(req.body["degree"]) &&
+      !validator.isEmpty(req.body["departments"]) &&
       !validator.isEmpty(req.body["address"]) &&
       !validator.isEmpty(req.body["contact"]) &&
       validator.isEmail(req.body["contact"]);
@@ -66,7 +66,7 @@ const updateUniversity = async (req, res) => {
     await db.none(
       `
       UPDATE university
-      SET name = $<name>, degree = $<degree>, address = $<address>, contact = $<contact>
+      SET name = $<name>, departments = $<departments>, address = $<address>, contact = $<contact>
       WHERE id = $<id> 
       `,
       req.body
