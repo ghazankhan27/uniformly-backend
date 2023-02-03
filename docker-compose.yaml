@@ -8,3 +8,11 @@ services:
       - POSTGRES_PASSWORD=${PG_PASSWORD}
     volumes:
       - ./data:/var/lib/postgresql/data
+
+  server:
+    build: .
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
