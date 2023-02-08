@@ -34,14 +34,15 @@ const addNewUniversity = async (req, res) => {
       validator.isEmail(req.body["contact"]);
     !validator.isEmpty(req.body["url"]) &&
       !validator.isEmpty(req.body["criteria"]);
+    !validator.isEmpty(req.body["uni_description"]);
 
     if (!valid) throw new Error("Invalid Data Received");
 
     await db.none(
       `
       INSERT INTO 
-      university (name,  address, contact, image, departments, url, criteria)
-      values ($<name>, $<address>, $<contact>, $<image>, $<departments>, $<url>, $<criteria>)
+      university (name,  address, contact, image, departments, url, criteria, description)
+      values ($<name>, $<address>, $<contact>, $<image>, $<departments>, $<url>, $<criteria>, $<uni_description>)
       `,
       { ...req.body, image: req.file.path }
     );
@@ -64,13 +65,20 @@ const updateUniversity = async (req, res) => {
       validator.isEmail(req.body["contact"]) &&
       !validator.isEmpty(req.body["url"]) &&
       !validator.isEmpty(req.body["criteria"]);
+    !validator.isEmpty(req.body["uni_description"]);
 
     if (!valid) throw new Error("Invalid Data Received");
 
     await db.none(
       `
       UPDATE university
-      SET name = $<name>, departments = $<departments>, address = $<address>, contact = $<contact>, url = $<url>, criteria = $<criteria> 
+      SET name = $<name>, 
+      departments = $<departments>, 
+      address = $<address>, 
+      contact = $<contact>, 
+      url = $<url>, 
+      criteria = $<criteria>, 
+      description = $<uni_description>
       WHERE id = $<id> 
       `,
       req.body

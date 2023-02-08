@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const fs = require("fs");
 const AuthRouter = require("./routes/AuthRouter");
 const DataRouter = require("./routes/DataRouter");
 const AdminAuthRouter = require("./routes/AdminAuthRouter");
@@ -15,6 +16,12 @@ const DepartmentRouter = require("./routes/DepartmentRouter");
 // Get express app
 
 const app = express();
+
+// Create uploads folder
+
+if (!fs.existsSync("./uploads")) {
+  fs.mkdirSync("./uploads");
+}
 
 // Middleware
 
